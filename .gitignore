@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+~$*
+
+# Secrets
+.env
+
+# Data, processed arrays, metrics and figures written by the pipeline: data and results stay off GitHub
+/data/
+/results/

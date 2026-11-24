@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Classifying ovarian cancer from serum proteomics with random Boolean network attractors"
+abstract: "A classifier that runs each serum mass spectrum through a random Boolean network and learns from the attractor it reaches, compared with a random forest on the NCI ovarian cancer data."
+authors:
+  - family-names: Brown
+    given-names: Findlay
+license: Apache-2.0
+repository-code: "https://github.com/FTBRWN0101/rbn-cancer-classifier"

@@ -1,0 +1,68 @@
+[project]
+name = "rbn-cancer-classifier"
+version = "1.0.0"
+description = "Random Boolean network attractor features for classifying ovarian cancer from serum mass spectra, compared with a random forest."
+readme = "README.md"
+authors = [{ name = "Findlay Brown" }]
+requires-python = ">=3.12"
+# Lower bounds as submitted; uv.lock pins the versions the tests and CI use.
+dependencies = [
+    "matplotlib>=3.7.5",
+    "numpy>=1.24.4",
+    "scikit-learn>=1.8.0",
+    "scipy>=1.17.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The code imports its stages as top-level packages, as `python src` runs it.
+pythonpath = ["src", "scripts"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-randomly>=5.1.0",
+    "ruff>=0.17.6",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Code is kept as submitted, so these files keep their original style.
+"src/__init__.py" = ["I001", "RUF022"]
+"src/__main__.py" = ["I001"]
+"src/data/__init__.py" = ["I001", "RUF022"]
+"src/data/discretizer.py" = ["I001", "UP037", "UP045"]
+"src/data/loader.py" = ["I001", "UP006", "UP035"]
+"src/data/preprocessor.py" = ["I001", "UP037", "UP045"]
+"src/data/runit.py" = ["I001"]
+"src/data/splitter.py" = ["I001", "UP006", "UP035", "UP037", "UP045"]
+"src/evaluation/__init__.py" = ["I001", "RUF022"]
+"src/evaluation/classifier.py" = ["BLE001", "F541", "I001", "UP045"]
+"src/evaluation/comparison.py" = ["I001", "UP006", "UP035"]
+"src/evaluation/metrics.py" = ["I001", "UP006", "UP035"]
+"src/evaluation/noise_robustness.py" = ["I001", "UP006", "UP035"]
+"src/evaluation/runit.py" = ["F401", "F541", "FURB129", "I001"]
+"src/feature_selection/__init__.py" = ["I001", "RUF022"]
+"src/feature_selection/importance.py" = ["BLE001", "F401", "I001", "UP045"]
+"src/feature_selection/runit.py" = ["F541", "I001"]
+"src/feature_selection/selection_methods.py" = ["I001"]
+"src/feature_selection/wrapper.py" = ["F401", "I001", "UP035"]
+"src/nk_landscape/SA.py" = ["I001", "N999"]
+"src/nk_landscape/__init__.py" = ["I001", "RUF022"]
+"src/nk_landscape/fitness_evaluator.py" = ["I001"]
+"src/nk_landscape/nk_landscape.py" = ["I001", "UP006", "UP035"]
+"src/nk_landscape/ruggedness.py" = ["I001"]
+"src/nk_landscape/runit.py" = ["I001"]
+"src/rbn/__init__.py" = ["I001", "RUF022"]
+"src/rbn/attractor.py" = ["C401", "I001", "UP006", "UP035"]
+"src/rbn/features.py" = ["C401", "F401", "I001", "UP006", "UP035"]
+"src/rbn/network.py" = ["I001", "UP006", "UP035", "UP045"]
+"src/rbn/runit.py" = ["F541", "I001"]
+"src/rbn/simulator.py" = ["I001", "UP006", "UP035"]
+"src/utils/__init__.py" = ["I001", "RUF022"]
+"src/utils/config.py" = ["I001", "UP045"]
+"src/utils/config_loader.py" = ["I001", "UP006", "UP035"]
+"src/utils/graphs.py" = ["I001"]
+"src/utils/latex_plots.py" = ["FLY002", "I001"]
+"src/utils/logging_utils.py" = ["F401"]
+"src/utils/runit.py" = ["I001"]
+"src/utils/visualisation.py" = ["F541", "I001"]
