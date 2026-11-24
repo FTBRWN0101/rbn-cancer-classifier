@@ -46,7 +46,7 @@ On a Windows PC, 27 of the 30 features matched the original run, and the RBN cla
 - `src/nk_landscape/`: an NK fitness landscape with simulated annealing, a demo that is separate from the classifier.
 - `src/utils/`: plots, saved metrics and project paths.
 - `scripts/download_data.py`: fetches and checks the dataset.
-- [METHODS.md](METHODS.md): each stage in detail, its parameters and its caveats.
+- [METHODS.md](METHODS.md): each stage in detail, with its parameters.
 
 ## Test it
 

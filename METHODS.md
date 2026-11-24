@@ -1,6 +1,6 @@
 # Methods
 
-This file sets out what each stage of the pipeline does, with its parameters, then the caveats that affect how to read the results.
+This file sets out what each stage of the pipeline does, with its parameters.
 Names in backticks are the matching identifiers in the code.
 
 ## Data preparation
@@ -79,18 +79,3 @@ The code scores both models once, on the 77 test samples.
 It builds an NK landscape (N = 20, K = 2, seed 42) and runs simulated annealing for 1,000 steps, from a temperature of 1 cooled by a factor of 0.995 per step.
 It then reports the lag-1 autocorrelation of fitness over 100 random genomes.
 Those genomes are independent, not steps of a walk, so this autocorrelation is near zero by construction and does not measure ruggedness.
-
-## Caveats
-
-- **Tied features.** Thousands of binary features tie exactly on all three selection scores, so numpy's sort order picks the last few of the 30.
-  That order can vary between machines, and so can the results.
-- **Scaling before the split.** `DataPreprocessor` fits its min-max scaling on all 253 samples, not on the training set alone.
-  Kent Ridge had already scaled the whole dataset to [0, 1], with one minimum and maximum over every sample and feature.
-  Binarisation only compares a value with its training median, so fitting the scaling on the training set alone changes 14 of the 1.17 million test values, none of them in the selected 30.
-- **Network size.** The network has 20 nodes but receives 30 features.
-  `step` updates the first 20 positions and sets the other 10 to 0, so features 21 to 30 only set the starting state.
-- **Redundant features.** `complexity` is always 1, because attractor states are distinct by construction.
-  `energy` is always 30 times `mean_activity`.
-  The 12 features therefore carry 10 separate signals.
-- **One split.** `optimize_threshold` tunes the decision threshold on the training set, and there is no validation set.
-  Every reported number rests on one set of 77 test samples.
